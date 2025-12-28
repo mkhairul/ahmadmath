@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "Ahmad Math Practice!", // Name of your project
+  "name": "ahmad-math", // Name of your project
   "compatibility_date": "2025-12-28",
   "assets": {
     "directory": "./", // Tells Cloudflare your HTML is in the root
