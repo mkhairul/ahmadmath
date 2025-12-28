@@ -76,7 +76,7 @@
   <!-- Falling Numbers Background -->
   <div class="falling-numbers" id="fallingNumbers"></div>
   
-  <div class="max-w-4xl mx-auto content-wrapper">
+  <div class="sm:max-w-4xl mx-auto content-wrapper">
     <!-- Header -->
     <header id="appHeader" class="text-center mb-8">
       <h1 class="text-5xl sm:text-6xl font-bold mb-2 bubble-text" style="color: #FFD700; -webkit-text-stroke: 2px #FF6B9D;">
@@ -99,7 +99,7 @@
     </div>
 
     <!-- Freeform Mode -->
-    <div id="freeformMode" class="hidden bg-white sm:rounded-lg sm:shadow-lg sm:p-6 h-dvh flex flex-col">
+    <div id="freeformMode" class="hidden bg-white sm:rounded-lg sm:shadow-lg sm:p-6 h-dvh w-full flex flex-col">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2 sm:mb-4 gap-2 p-4 sm:p-0 flex-shrink-0">
         <h2 class="text-xl sm:text-2xl font-semibold text-gray-800">Writing Practice</h2>
         <button onclick="backToMenu()" class="text-gray-600 hover:text-gray-800 px-3 py-1 hover:bg-gray-100 rounded">← Back</button>
@@ -202,7 +202,7 @@
     </div>
 
     <!-- Quiz Setup -->
-    <div id="quizSetup" class="hidden bg-white rounded-lg shadow-lg p-6">
+    <div id="quizSetup" class="hidden bg-white sm:rounded-lg sm:shadow-lg sm:p-6 p-4 w-full flex flex-col justify-center">
       <div class="flex justify-between items-center mb-4">
         <h2 class="text-2xl font-semibold text-gray-800">Quiz Setup</h2>
         <button onclick="backToMenu()" class="text-gray-600 hover:text-gray-800">← Back</button>
@@ -245,7 +245,7 @@
     </div>
 
     <!-- Quiz Mode -->
-    <div id="quizMode" class="hidden bg-white rounded-lg shadow-lg p-6">
+    <div id="quizMode" class="hidden bg-white sm:rounded-lg sm:shadow-lg sm:p-6 p-4 w-full flex flex-col justify-center">
       <div class="flex justify-between items-center mb-4">
         <h2 class="text-2xl font-semibold text-gray-800">Quiz in Progress</h2>
         <div class="text-xl font-mono font-bold text-indigo-600" id="quizTimer">00:00:00</div>
@@ -279,7 +279,7 @@
     </div>
 
     <!-- Quiz Results -->
-    <div id="quizResults" class="hidden bg-white rounded-lg shadow-lg p-6">
+    <div id="quizResults" class="hidden bg-white sm:rounded-lg sm:shadow-lg sm:p-6 p-4 w-full flex flex-col justify-center">
       <h2 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Quiz Complete! 🎉</h2>
       
       <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6 mb-6">
