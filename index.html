@@ -106,7 +106,7 @@
       </div>
       
       <!-- Stopwatch (Desktop Only) -->
-      <div class="bg-gray-100 rounded-lg p-3 sm:p-4 mb-4 text-center hidden sm:block flex-shrink-0">
+      <div id="desktopStopwatch" class="bg-gray-100 rounded-lg p-3 sm:p-4 mb-4 text-center hidden sm:block flex-shrink-0">
         <div class="text-3xl sm:text-4xl font-mono font-bold text-gray-800 mb-3" id="freeformTimer">00:00:00</div>
         <div class="flex flex-wrap justify-center gap-2">
           <button id="freeformStartBtn" onclick="startFreeformTimer()" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg transition min-w-[100px] touch-manipulation">
@@ -123,8 +123,13 @@
 
 
       <!-- Floating Timer (appears when timer is running) -->
-      <div id="floatingTimer" class="hidden fixed top-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded-full shadow-lg z-40 opacity-80">
-        <div class="text-2xl font-mono font-bold" id="floatingTimerDisplay">00:00:00</div>
+      <div id="floatingTimer" class="hidden fixed top-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-4 py-2 rounded-full shadow-lg z-40 opacity-90">
+        <div class="flex items-center gap-3">
+          <div class="text-2xl font-mono font-bold" id="floatingTimerDisplay">00:00:00</div>
+          <button onclick="stopFreeformTimer()" class="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-full transition touch-manipulation text-sm">
+            Stop
+          </button>
+        </div>
       </div>
 
       <!-- Canvas -->
@@ -631,8 +636,21 @@
       document.getElementById('freeformStartBtnMobile').disabled = true;
       document.getElementById('freeformStopBtnMobile').disabled = false;
       
-      // Show floating timer
+      // Show floating timer and hide desktop stopwatch
       document.getElementById('floatingTimer').classList.remove('hidden');
+      document.getElementById('desktopStopwatch').classList.add('!hidden');
+      
+      // Enter fullscreen
+      const freeformMode = document.getElementById('freeformMode');
+      if (freeformMode.requestFullscreen) {
+        freeformMode.requestFullscreen().catch(err => {
+          console.log('Fullscreen request failed:', err);
+        });
+      } else if (freeformMode.webkitRequestFullscreen) { // Safari
+        freeformMode.webkitRequestFullscreen();
+      } else if (freeformMode.msRequestFullscreen) { // IE11
+        freeformMode.msRequestFullscreen();
+      }
       
       freeformInterval = setInterval(() => {
         freeformSeconds++;
@@ -653,8 +671,20 @@
       document.getElementById('freeformStartBtnMobile').disabled = false;
       document.getElementById('freeformStopBtnMobile').disabled = true;
       
-      // Hide floating timer
+      // Hide floating timer and show desktop stopwatch
       document.getElementById('floatingTimer').classList.add('hidden');
+      document.getElementById('desktopStopwatch').classList.remove('!hidden');
+      
+      // Exit fullscreen
+      if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { // Safari
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { // IE11
+          document.msExitFullscreen();
+        }
+      }
     }
 
     function resetFreeformTimer() {
