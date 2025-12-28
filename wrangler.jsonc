@@ -4,7 +4,6 @@
   "compatibility_date": "2025-12-28",
   "assets": {
     "directory": "./", // Tells Cloudflare your HTML is in the root
-    "binding": "ASSETS"
   },
   "observability": {
     "enabled": true
